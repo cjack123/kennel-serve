@@ -209,8 +209,10 @@
 #         if customer_id == animal_id:
 #             'add animal to customer_animal_dict' 'then continue'
             
+###############################################################################################
 
-# 4/18/2022
+
+# 4/18/2022 #
 # We're pretending that "world_supply_string" is an
 # example data-set representing all the doors and wheels of the world.
 # write code that will give you an answer to the question,

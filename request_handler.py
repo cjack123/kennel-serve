@@ -1,6 +1,12 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from views import get_all_animals, get_single_animal
 from views import create_animal, delete_animal,  update_animal
+from views import get_all_locations, get_single_location
+from views import create_location, delete_location, update_location
+from views import get_all_employees, get_single_employee
+from views import create_employee, delete_employee, update_employee
+from views import get_all_customers, get_single_customer
+from views import create_customer, delete_customer, update_customer
 import json
 
 
@@ -75,6 +81,27 @@ class HandleRequests(BaseHTTPRequestHandler):
             else:
                 response = f"{get_all_animals()}"
 
+        if resource == "locations":
+            if id is not None:
+                response = f"{get_single_location(id)}"
+
+            else:
+                response = f"{get_all_locations()}"
+
+        if resource == "employees":
+            if id is not None:
+                response = f"{get_single_employee(id)}"
+
+            else:
+                response = f"{get_all_employees()}"
+
+        if resource == "customers":
+            if id is not None:
+                response = f"{get_single_customer(id)}"
+
+            else:
+                response = f"{get_all_customers()}"
+
         self.wfile.write(response.encode())
 
     # Here's a method on the class that overrides the parent's method.
@@ -92,15 +119,33 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Initialize new animal
         new_animal = None
+        new_location = None
+        new_employee = None
+        new_customer = None
 
         # Add a new animal to the list. Don't worry about
         # the orange squiggle, you'll define the create_animal
         # function next.
         if resource == "animals":
             new_animal = create_animal(post_body)
-
-        # Encode the new animal and send in response
+            # Encode the new animal and send in response
         self.wfile.write(f"{new_animal}".encode())
+
+        if resource == "locations":
+            new_location = create_location(post_body)
+            # Encode the new animal and send in response
+        self.wfile.write(f"{new_location}".encode())
+
+        if resource == "employees":
+            new_employee = create_employee(post_body)
+            # Encode the new animal and send in response
+        self.wfile.write(f"{new_employee}".encode())
+
+        if resource == "customers":
+            new_customer = create_customer(post_body)
+            # Encode the new animal and send in response
+        self.wfile.write(f"{new_customer}".encode())
+
 
     # Here's a method on the class that overrides the parent's method.
     # It handles any PUT request.
@@ -116,9 +161,31 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Delete a single animal from the list
         if resource == "animals":
             update_animal(id, post_body)
-
+           
         # Encode the new animal and send in response
         self.wfile.write("".encode())
+
+         # Delete a single location from the list
+        if resource == "locations":
+            update_location(id, post_body)      
+
+        # Encode the new location and send in response
+        self.wfile.write("".encode())
+
+         # Delete a single employee from the list
+        if resource == "employees":
+            update_employee(id, post_body)      
+                 
+        # Encode the new employee and send in response
+        self.wfile.write("".encode())
+
+         # Delete a single customer from the list
+        if resource == "customers":
+            update_customer(id, post_body)      
+                 
+        # Encode the new customer and send in response
+        self.wfile.write("".encode())
+
 
     # Add the method to the class to process the DELETE request. 
     # Note that the response code is set to 204 (No Content)
@@ -132,9 +199,28 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Delete a single animal from the list
         if resource == "animals":
             delete_animal(id)
-
         # Encode the new animal and send in response
         self.wfile.write("".encode())
+
+        # Delete a single location from the list
+        if resource == "locations":
+            delete_location(id)
+        # Encode the new location and send in response
+        self.wfile.write("".encode())
+
+        # Delete a single employee from the list
+        if resource == "employees":
+            delete_employee(id)
+        # Encode the new employee and send in response
+        self.wfile.write("".encode())
+
+        # Delete a single customer from the list
+        if resource == "customers":
+            delete_customer(id)
+        # Encode the new customer and send in response
+        self.wfile.write("".encode())
+
+
 # This function is not inside the class. It is the starting
 # point of this application.
 def main():
