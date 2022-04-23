@@ -1,12 +1,8 @@
-from concurrent.futures.process import _python_exit
-from unicodedata import name
-
-
 class Customer():
-    def __init__(self, id, first_name, last_name, address, phone, email):
+    def __init__(self, id, name, address, phone, email, password):
         self.id = id
-        self.first_name =first_name
-        self.last_name = last_name
+        self.name = name
         self.address = address
         self.phone = phone
         self.email = email
+        self.password = password

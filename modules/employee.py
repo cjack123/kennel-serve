@@ -1,8 +1,7 @@
 class Employee():
 
-    def __init__(self, id, first_name, last_name, employee_number, shift):
+    def __init__(self, id, name, location_id, phone):
         self.id = id
-        self.first_name = first_name
-        self.last_name = last_name
-        self.employee_number = employee_number
-        self.shift = shift
+        self.name = name
+        self.location_id = location_id
+        self.phone = phone
