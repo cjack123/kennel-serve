@@ -8,8 +8,9 @@ CREATE TABLE `Customer` (
     `id`    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     `name`    TEXT NOT NULL,
     `address`    TEXT NOT NULL,
+    `phone` TEXT NOT NULL,
     `email`    TEXT NOT NULL,
-    `password`    TEXT NOT NULL
+
 );
 
 CREATE TABLE `Animal` (
@@ -51,8 +52,17 @@ INSERT INTO `Customer` VALUES (null, "Emily Lemmon", "454 Mulberry Way", "emily@
 
 
 
+
 INSERT INTO `Animal` VALUES (null, "Snickers", "Recreation", "Dalmation", 4, 1);
 INSERT INTO `Animal` VALUES (null, "Jax", "Treatment", "Beagle", 1, 1);
 INSERT INTO `Animal` VALUES (null, "Falafel", "Treatment", "Siamese", 4, 2);
 INSERT INTO `Animal` VALUES (null, "Doodles", "Kennel", "Poodle", 3, 1);
 INSERT INTO `Animal` VALUES (null, "Daps", "Kennel", "Boxer", 2, 2);
+
+-- Get only the animal rows where the `id` field value is 3
+SELECT
+    e.id,
+    e.name,
+    e.location_id
+FROM employee e
+WHERE e.id = 2
