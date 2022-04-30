@@ -1,12 +1,8 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from views import get_all_animals, get_single_animal
-from views import create_animal, delete_animal,  update_animal
-from views import get_all_locations, get_single_location
-from views import create_location, delete_location, update_location
-from views import get_all_employees, get_single_employee
-from views import create_employee, delete_employee, update_employee
-from views import get_all_customers, get_single_customer, get_customers_by_email
-from views import create_customer, delete_customer, update_customer
+from views import get_all_animals, get_single_animal,  create_animal, delete_animal,  update_animal, get_animals_by_location
+from views import get_all_locations, get_single_location, create_location, delete_location, update_location
+from views import get_all_employees, get_single_employee, create_employee, delete_employee, update_employee
+from views import get_all_customers, get_single_customer, get_customers_by_email, create_customer, delete_customer, update_customer
 import json
 
 
@@ -112,8 +108,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             if key == "email" and resource == "customers":
                 response = get_customers_by_email(value)
 
-            # if key == "location_Id" and resource == "animals":
-            #     response = get_animals_by_location(value)
+            if key == "location_Id" and resource == "animals":
+                response = get_animals_by_location(value)
             
             # if key == "location_id" and resource == "employees":
             #     response = get_employees_by_location(value)
