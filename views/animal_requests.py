@@ -153,7 +153,7 @@ def update_animal(id, new_animal):
             break
 
 
-def get_animals_by_location(location_id):
+def get_animals_by_location(location):
 
     with sqlite3.connect("./kennel.sqlite3") as conn:
         conn.row_factory = sqlite3.Row
